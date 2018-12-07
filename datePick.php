@@ -47,7 +47,7 @@ $_SESSION['   '] = $year;
 <div id="content">
   <h1 class="headingBrown">BOOK US</h1>
  <div id = "frm2">
-<form  method="POST" action = "schedule.php">
+<form  method="POST" action = "cleaningSchedule.php">
         <table border="0.5" >
 
             <tr>
