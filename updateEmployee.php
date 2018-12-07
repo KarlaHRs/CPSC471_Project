@@ -17,3 +17,5 @@ include ('header.php');
 		echo "<p> update successful </p>";
 	else
 		echo "<p> fail to update </p>";
+
+?>
