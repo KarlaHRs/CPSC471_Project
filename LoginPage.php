@@ -31,8 +31,6 @@
 				</center>
 				</form>
 				
-				
-			
 		</div>
 	</nav>
 </header>
