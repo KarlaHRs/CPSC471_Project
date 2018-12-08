@@ -13,7 +13,6 @@ $result = mysqli_query($con,$sql);
 <head>
 <meta charset="utf-8">
 <title>Cleaning Company</title>
-<link href="css/reset.css" rel="stylesheet" type="text/css">
 <link href="css/styleGuide.css" rel="stylesheet" type="text/css">
 </head>
 
