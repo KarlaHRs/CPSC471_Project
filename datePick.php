@@ -14,7 +14,6 @@ $_SESSION['    '] = $year;
 <head>
 <meta charset="utf-8">
 <title>Cleaning Company</title>
-<link href="css/reset.css" rel="stylesheet" type="text/css">
 <link href="css/styleGuide.css" rel="stylesheet" type="text/css">
 </head>
 
@@ -25,7 +24,7 @@ $_SESSION['    '] = $year;
 <div class="navBar-wrap">
   <div class ="navBar">
     <ul>
-      <li> <a href="index.php" >Home</a> </li>
+      <li> <a href="homePage.php" >Home</a> </li>
       <li> <a href="information.php" >About Us</a>
 
       </li>
@@ -58,17 +57,11 @@ $_SESSION['    '] = $year;
 			
 			<tr>
 
-                <td><label for="month">Month</label></td><br>
+                <td><label for="month">Month and Year</label></td><br>
                 <td><input type="month" name="pMonth"></td><br>
             </tr>
 
-             <tr>
 
-                <td><label for="year">Year</label></td><br>
-                <td><input type="year" name="pYear"></td><br>
-            </tr>
-
-            <tr>
 
                 <td>
 				<input type="submit" value="CHECK" id = "button" />
