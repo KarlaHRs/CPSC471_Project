@@ -85,7 +85,7 @@ $result = mysqli_query($con,$sql);
 
   </table>
 
-<p><a href="bookings.php" ><button name="insert" id="button">BOOK</button> </a>
+<p><a href="booking.php" ><button name="insert" id="button">BOOK</button> </a>
 
 
 
