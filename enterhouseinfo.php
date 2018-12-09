@@ -1,32 +1,55 @@
+<!DOCTYPE html>
 <html>
-<head>
-	
-	</head>
-	
-		<header class = "navigation">
-		<nav>
-			<div>
-				<a href="adminHomePage.php">Home</a>
-				<a href="/includes/db.inc.php">Update Company Info</a>
-				<a href="#">View Bookings</a>
-				<a href="viewResumes.php">View Resumes</a>
-				<a href="#">Update Services</a>
-				<ul>
-					<li>
-						<a href="#">Schedules</a>
-						<ul>
-							<li><a href="#">Company Schedule</a></li>
-							<li><a href="#">Cleaning Schedule</a></li>
-						</lu>
-					</li>
-				</ul>
-				<a href="#">My Info</a>
-				<a href="index.php">Log out</a>
-			</div>
-		</nav>
-	</header>
-	
-	<form 
+    <head>
+        <title>Book Cleaning</title>
+        <link rel="stylesheet" type="text/css" href="style2.css">
+    </head>
+
+    <body>
+        <header class = "navigation">
+            <nav>
+                <div>
+                    <a href="CustomerHomePage.php">Home</a>
+                    <a href="writeFeedback.php">Submit Feedback</a>
+                    <a href="#">View Bookings</a>
+                    <a href="SubmitResume.php">Submit Resumes</a>
+                    <a href="#">My Info</a>
+                    <a href="HomePage.php">Log out</a>
+                </div>
+            </nav>
+        </header>
+
+        <div style="text-align:center">
+            <p style="font-family:Snell Roundhand, cursive; color:Black; font-size: 20px;">Information last provided about your home</p>
+            <br><br>
+        </div>
+        
+        <?php
+        session_start();
+
+        include("includes/db.inc.php");
+        
+        $bed = $_POST['bed'];
+        $bath = $_POST['bath'];
+        $size = $_POST['size'];
+        if($size == '0'){
+            $size = "N/A";
+        }
+        $total .= "$" . $_POST['total'];
+        $addOn = $_POST['add'];
+        
+        ?>
+        <form class="inputbox">
+            Number of bedrooms: <input type="text" value="<?php echo $bed?>" readonly style="text-align:center;">
+            Number of bathrooms: <input type="text" value="<?php echo $bath?>" readonly style="text-align:center;">
+            Size of your home: <input type="text" value="<?php echo $size?>" readonly style="text-align:center;">
+            Add ons: <input type="text" value="<?php echo $addOn?>" readonly style="text-align:center;"><br>
+            Estimated total: <input type="text" value="<?php echo $total?>" readonly style="text-align:center;">
+        </form>
+
+
+</body>
+</html>
 <?php
 	
 if(isset($_POST['submit'])){
@@ -51,4 +74,3 @@ if(isset($_POST['submit'])){
 }
 ?>
 
-</html>

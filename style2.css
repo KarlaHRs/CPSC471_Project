@@ -159,7 +159,7 @@ input, select {
 	background-color: #E8DAEF;
 	color: white;
 	border: none;
-	padding: 15px 32 px;
+	padding: 8px 25px;
 	text-align: center;
 	text-decoration: none;
 	margin: 4px 2px;
@@ -194,7 +194,8 @@ article{
 }
 
 .inputbox{
-    text-align: center;
+    text-align: left;
+    align-items: center;
     margin: 0 auto;
     width: 500px;
     background-color: #EFFBF2;
@@ -203,5 +204,30 @@ article{
 .inputbox div {
     margin:0 auto;
     width:250px;
+}
+
+#bedroom {
+    width: 50px;
+    color: pink;
+}
+
+select{
+    text-align: center;
+    text-align-last: center;
+}
+
+#bathroom {
+    width: 50px;
+    color: pink;
+}
+
+#size{
+    width: 100px;
+    color: lightblue;
+}
+
+#boxes{
+    padding-left: 20px;
+    margin: 0px 10px;
 }
 

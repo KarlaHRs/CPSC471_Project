@@ -18,6 +18,7 @@
 			</div>
 		</nav>
 	</header><br><br>
+        <button class="loginbutton" onclick="displayConfirmation">
         <form method="post">
             <font size="5" color="white">
                  Day of cleaning : <input type="text" name="day"><br><br>
