@@ -2,16 +2,14 @@
 <html>
 <head>
         <meta charset="UTF-8">
-        <title>Search Results</title>
+        <title>Current Price List</title>
         <style>
+h2{
+    padding: 0;
+    margin: 0;
+}
 		
-		 h2
- {
-     padding: 0;
-     margin: 0;
- }
-		
-		table {
+table {
   font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
   border-collapse: collapse;
   width: 100%;
@@ -24,9 +22,9 @@ table td, table th {
 
 table tr:nth-child(even){background-color: #f2f2f2;}
 
- table tr:hover {background-color: #dddddd;}
+table tr:hover {background-color: #dddddd;}
 
- table th {
+table th {
   padding-top: 12px;
   padding-bottom: 12px;
   text-align: left;
@@ -71,32 +69,45 @@ table tr:nth-child(even){background-color: #f2f2f2;}
 	</header>
 	<?php
 	
-			include("includes/db.inc.php");
+        
+            function update($result){
+                   echo"<table style=width:100%><tr><th>ID</th><th>Feature Name</th><th>Current Price</th>&nbsp;&nbsp;&nbsp;
+                    <td></tr>";
+                while($row = $result->fetch_assoc()){
+                    echo"<tr><td>".$row["id"]."</td><td>".$row["featureName"]."</td><td>".$row["price"]."</td><td><form method=POST>New Price: <input type=text name=NewPrice>"
+                            . "<button type=submit class=viewedbutton value=$row[id] name=button>Update Price</button>New Name: <input type=text name=NewName>"
+                            . "<button type=submit class=viewedbutton value=$row[id] name=name>Update Name</button></form></td></tr>";
+                }
+                echo "</table>";
+                
+            }
+        
+            include("includes/db.inc.php");
 			
 			
-			$sql="SELECT * FROM resume";
-			$result = $conn->query($sql);
-			if($result->num_rows > 0){
-			
-				echo"<table style=width:100%><tr><th>ID</th><th>First Name</th><th>Last Name</th><th>Availability</th><th>Experience</th>&nbsp;&nbsp;&nbsp;
-					<td></tr>";
-				while($row = $result->fetch_assoc()){
-					echo"<tr><td>".$row["id"]."</td><td>".$row["Fname"]."</td><td>".$row["Lname"]."</td><td>".$row["availability"]."</td><td>".$row["Experience"]."
-					</td><td><form method=POST><button type=submit class=viewedbutton value=$row[id] name=button onclick=getID() >Mark as viewed</button></form></td></tr>";
-				}
-				echo "</table>";
-			}else {
-				echo "No resumes submitted at this time";
-			}
+            $sql="SELECT * FROM priceCategory";
+            $result = $conn->query($sql);
+            if($result->num_rows > 0){	
+                update($result);
+            }else {
+		echo "No price list available at this time";
+            }
 			
 			
 			if(isset($_POST['button'])){
+                                $newPrice = $_POST['NewPrice'];
 				$ID = $_POST['button'];
-				$sql = "UPDATE resume SET reviewed = true WHERE id = $ID";
+				$sql = "UPDATE priceCategory SET price = $newPrice  WHERE id = $ID";
 				$result = $conn->query($sql);
-				echo ("<script LANGUAGE='JavaScript'>
-				window.alert('Resume successfully marked as viewed!');
-				</script>");
+                                header('Refresh: 0');
+			}
+                        
+                        if(isset($_POST['name'])){
+                                $newName = $_POST['NewName'];
+				$ID = $_POST['name'];
+				$sql = "UPDATE priceCategory SET featureName = '$newName'  WHERE id = $ID";
+				$result = $conn->query($sql);
+                                header('Refresh: 0');
 			}
 
 	?>

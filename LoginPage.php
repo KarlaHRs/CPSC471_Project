@@ -24,7 +24,7 @@
 						<img src="user.png" alt="Avatar" class="avatar"><br><br>
 					</div>
 					<p>Username</p><br>
-					<input type="text" name="user" maxlength ="10" " placeholder="Enter Username"><br><br>
+					<input type="text" name="user" maxlength ="10" placeholder="Enter Username"><br><br>
 					<p>Password</p><br>
 					<input type="password" name="pwd" maxlength="15" placeholder="Enter password">
 					<br><br><br>

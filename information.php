@@ -22,12 +22,7 @@
 		 <li> <a href="datePick.php" >Bookings</a> </li>
 
       <li> <a href="contacts.php" >Contact Us</a> </li>
-		<li> <a href="#" >Login</a>
-		<ul>
-			<li> <a href="login.php" >Member Login</a> </li>
-
-			<li> <a href="admin_login.php" >Admin Login</a> </li>
-			</ul></li>
+		<li> <a href="LoginPage.php" >Login</a>
     </ul>
 
 

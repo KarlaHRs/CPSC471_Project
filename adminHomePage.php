@@ -13,18 +13,27 @@
 				<a href="#">Update Company Info</a>
 				<a href="#">View Bookings</a>
 				<a href="viewResumes.php">View Resumes</a>
-				<a href="#">Update Services</a>
-				<ul>
-					<li>
-						<a href="#">Schedules</a>
-						<ul>
-							<li><a href="CompanySchedule.php">Company Schedule</a></li>
-							<li><a href="cleaningSchedule.php">Cleaning Schedule</a></li>
-						</lu>
+                               
+                                <ul>
+                                    <li>
+                                        <a href="#">Update Services</a>
+                                        <ul>
+                                            <li><a href="EditPrice.php">Update Prices</a></li>
+                                            <li><a href="AddPrice.php">Add New Features</a></li>
+                                        </ul>
 					</li>
 				</ul>
+				<ul>
+                                    <li>
+					<a href="#">Schedules</a>
+                                        <ul>
+                                            <li><a href="CompanySchedule.php">Company Schedule</a></li>
+                                            <li><a href="cleaningSchedule.php">Cleaning Schedule</a></li>
+                                        </ul>
+                                    </li>
+				</ul>
 				<a href="#">My Info</a>
-				<a href="index.php">Log out</a>
+				<a href="homePage.php">Log out</a>
 			</div>
 		</nav>
 	</header>

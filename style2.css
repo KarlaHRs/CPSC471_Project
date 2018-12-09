@@ -167,11 +167,41 @@ input, select {
 }
 
 article{
-	font-family: "Trebuchet MS", Arial, sans-serif;
+    font-family: "Trebuchet MS", Arial, sans-serif;
     font-size: 25px;
     color: black;
     margin: 0;
     padding: 150px;
     overflow: hidden;
-	text-align: center;
+    text-align: center;
 }
+
+
+.inputbox input[type=text] {
+  width: 70%;
+  padding: 6px 10px;
+  margin: 15px auto;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  outline: none;
+}
+
+
+.inputbox input[type=text]:focus {
+  border: 2px solid #555;
+}
+
+.inputbox{
+    text-align: center;
+    margin: 0 auto;
+    width: 500px;
+    background-color: #EFFBF2;
+}
+
+.inputbox div {
+    margin:0 auto;
+    width:250px;
+}
+
