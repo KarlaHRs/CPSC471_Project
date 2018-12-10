@@ -84,8 +84,7 @@
             $bath = $_POST['bathroom'];
             $size = $_POST['size'];
             $customer = $_SESSION['username'];
-
-
+            $dataString = serialize($addOn);
 
             $sql = "SELECT price FROM priceCategory WHERE featureName = 'bedroom'";
             $result = $conn->query($sql);
@@ -163,6 +162,8 @@
             }
             $total = $addonp + $ps + $pbath + $pbed;
         }
+        
+        $_SESSION['array_name'] = $addOn;
         ?>
     <center>
         <br><br>
@@ -175,6 +176,7 @@
             <input type="hidden" name="size" value="<?php echo $s2; ?>">
             <input type="hidden" name="total" value="<?php echo $total; ?>">
             <input type="hidden" name="add" value="<?php echo $addS; ?>">
+            <input type="hidden" name="dataString" value="<?php echo $dataString; ?>">
             <button class="viewedbutton" type="submit">Book Cleaning</button>
         </form>
     </center> 
