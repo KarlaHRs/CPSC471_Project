@@ -11,7 +11,7 @@
 			<div>
 				<a href="homePage.php">Home</a>
 				<a href="information.php">About us</a>
-				<a href="#"> Bookings</a>
+				<a href="LoginPage.php"> Bookings</a>
 				<a href="contacts.php">Contact us</a>
 				<a href="LoginPage.php">Login</a>
 				
