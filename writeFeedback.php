@@ -13,7 +13,7 @@
                     <a href="#">View Bookings</a>
                     <a href="SubmitResume.php">Submit Resumes</a>
                     <a href="#">Update Services</a>
-                    <a href="#">My Info</a>
+                    <a href="customerInfo">My Info</a>
                     <a href="information.php">Log out</a>
                 </div>
             </nav>
