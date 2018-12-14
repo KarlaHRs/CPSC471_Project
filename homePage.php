@@ -1,48 +1,33 @@
-<!doctype html>
 <html>
 <head>
-<meta charset="utf-8">
-<title>Cleaning Company</title>
-<link href="css/reset.css" rel="stylesheet" type="text/css">
-<link href="css/styleGuide.css" rel="stylesheet" type="text/css">
+	<title>Home Page</title>
+	<link rel="stylesheet" type="text/css" href="style2.css">
 </head>
 
-
 <body>
-<div id="container">
-<div id="banner"></div>
-<div class="navBar-wrap">
-  <div class ="navBar">
-    <ul>
-      <li> <a href="homePage.php" >Home</a> </li>
-      <li> <a href="information.php" >About Us</a>
+	<header class = "navigation">
+		<nav>
+			<div>
+				<a href="homePage.php">Home</a>
+				<a href="information.php">About us</a>
+				<a href="#"> Bookings</a>
+				<a href="contacts.php">Contact us</a>
+				<a href="LoginPage.php">Login</a>
+				
+                               
 
-      </li>
+					</li>
+				</ul>
+				<ul>
 
-		 <li> <a href="datePick.php" >Bookings</a> </li>
-
-      <li> <a href="contacts.php" >Contact Us</a> </li>
-		<li> <a href="LoginPage.php" >Login</a>
-    </ul>
-
-
-  </div>
-</div>
-
-
-<div id="content">
-  <h1 class="headingBrown">Welcome to Cleaning Company</h1>
-
-  <p>&nbsp;</p>
-
-<p> We will serve you wholeheartedly</p>
-</div>
-<div id="footer">
-  <p> Copyright&copy; 2018.<br>
-
-  <a href="ziyin.zhao@ucalgary.ca" class="a">Contact Webmaster</a> </p></div>
-  </div>
-
+	</header>
+	
+<article>
+		Welcome!<br><br>
+		
+		<p> We will serve you wholeheartedly</p>
+		
+	</article>
+	
 </body>
-
 </html>
