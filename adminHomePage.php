@@ -32,7 +32,7 @@
                                         </ul>
                                     </li>
 				</ul>
-				<a href="#">My Info</a>
+				<a href="adminHomePage.php">My Info</a>
 				<a href="homePage.php">Log out</a>
 			</div>
 		</nav>
