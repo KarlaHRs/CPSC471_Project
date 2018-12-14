@@ -113,3 +113,13 @@ CREATE TABLE resume (
     PRIMARY KEY(id),
     foreign key (adminUsername) references admin(username)
 );
+
+CREATE TABLE `cleaninglocation` (
+  `zipCode` varchar(10) NOT NULL,
+  `houseNo` int(5) NOT NULL,
+  `bedrooms` int(2) NOT NULL,
+  `bathrooms` int(2) NOT NULL,
+  `address` varchar(50) NOT NULL,
+  `size` varchar(30) NOT NULL DEFAULT '0',
+  `Cusername` varchar(30) NOT NULL DEFAULT ''
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
