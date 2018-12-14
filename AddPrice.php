@@ -134,10 +134,7 @@ table th {
                    
 
 	?>
-	<script>
 
-		
-	</script>
 	
 
 	</body>

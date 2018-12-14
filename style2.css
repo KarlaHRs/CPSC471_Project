@@ -241,3 +241,18 @@ textarea{
   background-color: #f8f8f8;
   resize: none;
 }
+
+.update{
+    text-align: center;
+    align-items: center;
+    margin: 0 auto;
+    width: 500px;
+    background-color: transparent;
+}
+
+#av {
+    width: 130px;
+    color: pink;
+    padding: 6px 15px;
+}
+

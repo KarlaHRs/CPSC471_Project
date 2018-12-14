@@ -39,9 +39,6 @@
         $total .= "$" . $_POST['total'];
         $addOn = $_POST['add'];
         $array = $_SESSION['array_name'];
-        echo ("<script LANGUAGE='JavaScript'>
-                                        window.alert('b = $bed');
-                                        </script>");
         if (isset($_POST['submit'])) {
 
             $bed = $_POST['bed'];
@@ -58,7 +55,7 @@
             } else {
                 $comment = "N/A";
             }
-            
+
             if (empty($zipcode) || empty($houseno) || empty($address)) {
                 header("Location: ../enterhouseinfo.php?error=emptyfields");
                 exit();
@@ -99,15 +96,13 @@
             Add ons: <input type="text" value="<?php echo $addOn ?>" readonly style="text-align:center;"><br>
             Estimated total: <input type="text" value="<?php echo $total ?>" readonly style="text-align:center;">
 
+
             <br><br>
 
-
-
-
-            Zip Code: <input type="text" id="zip" name="zip"><br>
-            House No: <input type="text" id="number" name="houseno"><br>
-            Address: <input type="text" id="address" name="address"><br>
-            <label for="frequency">Frequency of cleaning: </label>
+            *Zip Code: <input type="text" id="zip" name="zip"><br>
+            *House No: <input type="text" id="number" name="houseno"><br>
+            *Address: <input type="text" id="address" name="address"><br>
+            *<label for="frequency">Frequency of cleaning: </label>
             <select name = "frequency" id="frequency">
                 <option value="Weekly">Weekly</option>
                 <option value="Bi-weekly">Bi-weekly</option>

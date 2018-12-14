@@ -10,6 +10,7 @@
 		<nav>
 			<div>
 				<a href="CustomerHomePage.php">Home</a>
+                                <a href="getEstimate.php">Book Cleaning</a>
 				<a href="writeFeedback.php">Submit Feedback</a>
 				<a href="#">View Bookings</a>
 				<a href="SubmitResume.php">Submit Resumes</a>

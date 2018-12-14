@@ -32,6 +32,7 @@
             </form>
 
             <?php
+            session_start();
             if (isset($_POST['submit'])) {
 
                 include("includes/db.inc.php");
@@ -41,6 +42,7 @@
                 $year = $_POST['year'];
                 $comment = $_POST['comment'];
                 $id = $_POST['id'];
+                $username = $_POST['username'];
 
 
                 if (empty($day) || empty($month) || empty($year) || empty($comment) || empty($id)) {
@@ -50,7 +52,7 @@
                                 </script>");
                 } else {
 
-                    $sql = "INSERT INTO feedback (day, month, year, cleaningId, comment, adminUsername) VALUES ('$day', '$month', '$year', '$id', '$comment', null)";
+                    $sql = "INSERT INTO feedback (day, month, year, cleaningId, comment, adminUsername) VALUES ('$day', '$month', '$year', '$id', '$comment', '$username')";
                     if ($conn->query($sql)) {
                         echo "Records added successfully.";
                     } else {
