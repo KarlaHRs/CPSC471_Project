@@ -1,50 +1,42 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
-<title>Cleaning Company</title>
-
-<link href="css/styleGuide.css" rel="stylesheet" type="text/css">
+	<title>About Us</title>
+	<link rel="stylesheet" type="text/css" href="style2.css">
 </head>
 
-
 <body>
-<div id="container">
-<div id="banner"></div>
-<div class="navBar-wrap">
-  <div class ="navBar">
-    <ul>
-      <li> <a href="index.php" >Home</a> </li>
-      <li> <a href="information.php" >About Us</a>
+	<header class = "navigation">
+		<nav>
+			<div>
+				<a href="homePage.php">Home</a>
+				<a href="information.php">About us</a>
+				<a href="#"> Bookings</a>
+				<a href="contacts.php">Contact us</a>
+				<a href="LoginPage.php">Login</a>
+				
+                               
 
+					</li>
+				</ul>
+				<ul>
 
-		 <li> <a href="datePick.php" >Bookings</a> </li>
+	</header>
+	
+<article>
+		WebOwner: Ms.A<br><br>
+		
+		email:aaaa@ucalgary.ca</br><br>
+		
+		phone number:(111)111-1111</br><br>
+		
+		If you find some problem, please contact us as soon as possible</br><br>
+		
+		Thank you very much </br><br>
 
-      <li> <a href="contacts.php" >Contact Us</a> </li>
-		<li> <a href="#" >Login</a>
-		<ul>
-			<li> <a href="login.php" >Member Login</a> </li>
-
-			<li> <a href="admin_login.php" >Admin Login</a> </li>
-			</ul></li>
-    </ul>
-
-
-  </div>
-</div>
-<div id="content">
-  <h1 class="headingBrown">CONTACT INFORMATION</h1>
-
-  <p>&nbsp;</p>
-
- <p> WRITE THE CONTACTS </p>
-</div>
-<div id="footer">
-  <p> Copyright&copy; 2018.<br>
-
-  <a href="ziyin.zhao@ucalgary.ca" class="a">Contact Webmaster</a> </p></div>
-  </div>
-
+<br>
+		
+	</article>
+	
 </body>
-
 </html>
