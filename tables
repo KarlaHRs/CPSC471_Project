@@ -1,12 +1,43 @@
-CREATE TABLE `customer` (
-  `username` varchar(30) NOT NULL,
-  `password` varchar(30) NOT NULL,
-  `Fname` varchar(50) NOT NULL,
-  `Lname` varchar(50) NOT NULL,
-  `isAdmin` tinyint(1) NOT NULL DEFAULT '0',
-  `email` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE TABLE cleaninglocation (
+	CUsername varchar(30) NOT NULL, 
+    bedrooms int(2) NOT NULL,
+	bathrooms int(2) NOT NULL,
+	address varchar(50) NOT NULL,
+	size varchar(30) NOT NULL,
+    zipCode varchar(10) NOT NULL, 
+    houseNo INT(10) NOT NULL,
+    PRIMARY KEY(zipCode),
+    Foreign key(CUsername) references customer(username)
+);
 
+
+CREATE TABLE Customer (
+	username varchar(30) NOT NULL, 
+    password varchar(30) NOT NULL,
+    Fname varchar(50) NOT NULL,
+    Lname varchar(50) NOT NULL,
+    isAdmin tinyint(1), 
+    email varchar(50) NOT NULL,  
+    phoneNumber varchar(30),
+    zipCode varchar(10) NOT NULL, 
+    houseNo INT(10) NOT NULL,
+    PRIMARY KEY(Username),
+    Foreign key(zipCode) references CleaningLocation(zipCode)
+);
+
+CREATE TABLE admin (
+	username varchar(30) NOT NULL, 
+    password varchar(30) NOT NULL,
+    Fname varchar(50) NOT NULL,
+    Lname varchar(50) NOT NULL,
+    isAdmin tinyint(1), 
+    email varchar(50) NOT NULL,  
+    phoneNumber varchar(30),
+    zipCode varchar(10) NOT NULL, 
+    houseNo INT(10) NOT NULL,
+    PRIMARY KEY(Username)
+    Foreign key(zipCode) references CleaningLocation(zipCode)
+);
 
 CREATE TABLE cleaningSchedule (
 	  day int(2) NOT NULL, 
@@ -107,13 +138,3 @@ CREATE TABLE resume (
     PRIMARY KEY(id),
     foreign key (adminUsername) references admin(username)
 );
-
-CREATE TABLE `cleaninglocation` (
-  `zipCode` varchar(10) NOT NULL,
-  `houseNo` int(5) NOT NULL,
-  `bedrooms` int(2) NOT NULL,
-  `bathrooms` int(2) NOT NULL,
-  `address` varchar(50) NOT NULL,
-  `size` varchar(30) NOT NULL DEFAULT '0',
-  `Cusername` varchar(30) NOT NULL DEFAULT ''
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
