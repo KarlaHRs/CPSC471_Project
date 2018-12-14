@@ -76,15 +76,16 @@
             } else {
                 echo "Error: " . $sql . "<br>" . $conn->error;
             }
-
-            foreach ($array as $item) {
-                $sql = "INSERT INTO serviceType(service, cleaningId) VALUES ('$item', $cleaningID)";
-                if ($conn->query($sql) === TRUE) {
-                    echo ("<script LANGUAGE='JavaScript'>
-              window.alert('New record created!');
+            if (!empty($array)) {
+                foreach ($array as $item) {
+                    $sql = "INSERT INTO serviceType(service, cleaningId) VALUES ('$item', $cleaningID)";
+                    if ($conn->query($sql) === TRUE) {
+                        echo ("<script LANGUAGE='JavaScript'>
+              window.alert('Your cleaning was booked successfully!');
               </script>");
-                } else {
-                    echo "Error: " . $sql . "<br>" . $conn->error;
+                    } else {
+                        echo "Error: " . $sql . "<br>" . $conn->error;
+                    }
                 }
             }
         }
