@@ -1,101 +1,125 @@
-<?php
-session_start();
-$day = $_POST['day'];
-$month = $_POST['month'];
-$year = $_POST['year'];
-$con = mysqli_connect("localhost", "breesuisui");
-mysqli_select_db($con,"cleaning_system");
-
-$sql ="select * from current_schedule where day = '$day',month = 'month', year = 'year'";
-
-$result = mysqli_query($con,$sql);
-
-?>
-
-<!doctype html>
+<!DOCTYPE html>
 <html>
-<head>
-<meta charset="utf-8">
-<title>Cleaning Company</title>
-<link href="css/reset.css" rel="stylesheet" type="text/css">
-<link href="css/styleGuide.css" rel="stylesheet" type="text/css">
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <title>Current Price List</title>
+        <style>
+            h2{
+                padding: 0;
+                margin: 0;
+            }
 
+            table {
+                font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+                border-collapse: collapse;
+                width: 100%;
+            }
 
-<body>
-<div id="container">
-<div id="banner"></div>
-<div class="navBar-wrap">
-  <div class ="navBar">
-    <ul>
-      <li> <a href="index.php" >Home</a> </li>
-      <li> <a href="information.php" >About Us</a>
+            table td, table th {
+                border: 1px solid #ddd;
+                padding: 8px;
+            }
 
-      </li>
+            table tr:nth-child(even){background-color: #f2f2f2;}
 
-		 <li> <a href="datePick.php" >Bookings</a> </li>
+            table tr:hover {background-color: #dddddd;}
 
-      <li> <a href="contacts.php" >Contact Us</a> </li>
-		<li> <a href="#" >Login</a>
-		<ul>
-			<li> <a href="login.php" >Member Login</a> </li>
+            table th {
+                padding-top: 12px;
+                padding-bottom: 12px;
+                text-align: left;
+                background-color: black;
+                color: white;
+            }
 
-			<li> <a href="admin_login.php" >Admin Login</a> </li>
-			</ul></li>
-    </ul>
+        </style>
+        <link rel="stylesheet" type="text/css" href="style2.css">
+    </head>
 
+    <body>
+        <header class = "navigation">
+            <nav>
+                <div>
+                    <a href="adminHomePage.php">Home</a>
+                    <a href="#">Update Company Info</a>
+                    <a href="#">View Bookings</a>
+                    <a href="viewResumes.php">View Resumes</a>
 
-  </div>
-</div>
+                    <ul>
+                        <li>
+                            <a href="#">Update Services</a>
+                            <ul>
+                                <li><a href="EditPrice.php">Update Prices</a></li>
+                                <li><a href="AddPrice.php">Add New Features</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <ul>
+                        <li>
+                            <a href="#">Schedules</a>
+                            <ul>
+                                <li><a href="CompanySchedule.php">Company Schedule</a></li>
+                                <li><a href="cleaningSchedule.php">Cleaning Schedule</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <a href="adminInfo.php">My Info</a>
+                    <a href="homePage.php">Log out</a>
+                </div>
+            </nav>
+        </header>
+        <br><br>
+        <div style="text-align:center">
+            <p style="font-family:Snell Roundhand, cursive; color:Black; font-size: 17px;">Currently Scheduled Cleanings.</p>
+            <br<br<br><br>
+        </div>
 
+        <?php
+        include("includes/db.inc.php");
+        if (!isset($_SESSION)) {
+            session_start();
+        }
 
-<div id="content">
-  <h1 class="headingBrown">CHECK AVAILABILITY</h1><br>
- <table width = "900" border = "2" cellpadding = "1" cellspacing = "1" >
- <tr>
- <th>Day</th>
-  <th>Month</th>
-   <th>Year</th>
-     <th>Time</th>
-       <th>Availability</th>
+        function setAv($a) {
+            if ($a == '1') {
+                return "available";
+            } else {
+                return "unavailable";
+            }
+        }
 
-  </tr>
+        ?>
 
-  <?php
-  while($cal = mysqli_fetch_assoc($result)){
-   $d = $cal['Day'];
-   $m = $cal['Month'];
-   $y = $cal['Year'];
-   $t = $cal['Time'];
-   $a = $cal['Availability'];
- 
+        <?php
+        $sql = "SELECT * FROM cleaningschedule";
+        $result = $conn->query($sql);
+        if ($result->num_rows > 0) {
+            update($result);
+        } else {
+            echo "No available schedule at this time";
+        }
 
+        function update($result) {
+            echo"<table style=width:100%><tr><th>Date</th><th>Start Time</th><th>Customer ID</th><th> Cleaning ID</th>
+                   </tr>";
+            while ($row = $result->fetch_assoc()) {
+                echo"<tr><td>" . $row["Date"] . "</td><td>" . $row["startTime"] . "</td><td>" . $row["CUsername"] . "</td><td>" . $row["cleaningId"] . "</td></tr>";
+            }
+            echo "</table>";
+        }
+        ?>
+    </body>
 
+    <script>
+        function myFunction() {
+            var input = document.getElementById("myDate").value;
+            var date = new Date(input).getUTCDay();
 
-  echo  "<tr>";
-  echo "<td>".$d."</td>";
-  echo "<td>".$m."</td>";
-  echo "<td>".$y."</td>";
-  echo "<td>".$t."</td>";
-  echo "<td>".$a."</td>";
-  echo  "</tr>";
+            var weekday = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+            var day = weekday[date];
 
-  }
-  ?>
-
-  </table>
-
-<p><a href="booking.php" ><button name="insert" id="button">BOOK</button> </a>
-
-
-
-</div>
-<div id="footer">
-  <p> Copyright&copy; 2018. <br>
-
-  <a href="ziyin.zhao@ucalgary.ca" class="a">Contact Webmaster</a> </p></div>
-  </div>
-
-</body>
-
+            document.getElementById("date").value = day;
+            document.getElementById("da").value = input;
+        }
+    </script>
 </html>

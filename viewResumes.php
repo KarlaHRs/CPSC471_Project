@@ -43,7 +43,6 @@ table tr:nth-child(even){background-color: #f2f2f2;}
 			<div>
 				<a href="adminHomePage.php">Home</a>
 				<a href="#">Update Company Info</a>
-				<a href="#">View Bookings</a>
 				<a href="viewResumes.php">View Resumes</a>
                                
                                 <ul>
@@ -64,7 +63,7 @@ table tr:nth-child(even){background-color: #f2f2f2;}
                                         </ul>
                                     </li>
 				</ul>
-				<a href="#">My Info</a>
+				<a href="adminInfo.php">My Info</a>
 				<a href="homePage.php">Log out</a>
 			</div>
 		</nav>

@@ -9,11 +9,11 @@
             <nav>
                 <div>
                     <a href="CustomerHomePage.php">Home</a>
+                    <a href="getEstimate.php">Book Cleaning</a>
                     <a href="writeFeedback.php">Submit Feedback</a>
                     <a href="#">View Bookings</a>
                     <a href="SubmitResume.php">Submit Resumes</a>
-                    <a href="#">Update Services</a>
-                    <a href="#">My Info</a>
+                    <a href="customerInfo.php">My Info</a>
                     <a href="information.php">Log out</a>
                 </div>
             </nav>
@@ -44,11 +44,10 @@
             $id = $_POST['id'];
             $username = $_POST['username'];
 
-            if( ! ini_get('date.timezone') )
-{
-    date_default_timezone_set('UTC');
-}
-            
+            if (!ini_get('date.timezone')) {
+                date_default_timezone_set('UTC');
+            }
+
             $date = strtotime("$year-$month-$day");
             $date = date("Y-m-d", $date);
 
@@ -61,7 +60,7 @@
 
                 $sql = "INSERT INTO feedback (date, cleaningId, comment, adminUsername) VALUES ('$date', $id, '$comment', NULL)";
                 if ($conn->query($sql)) {
-                  
+                    
                 } else {
                     echo "ERROR: Could not able to execute $sql. ";
                 }

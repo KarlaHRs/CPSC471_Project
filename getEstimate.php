@@ -10,11 +10,12 @@
             <nav>
                 <div>
                     <a href="CustomerHomePage.php">Home</a>
+                    <a href="getEstimate.php">Book Cleaning</a>
                     <a href="writeFeedback.php">Submit Feedback</a>
                     <a href="#">View Bookings</a>
                     <a href="SubmitResume.php">Submit Resumes</a>
-                    <a href="#">My Info</a>
-                    <a href="HomePage.php">Log out</a>
+                    <a href="customerInfo.php">My Info</a>
+                    <a href="information.php">Log out</a>
                 </div>
             </nav>
         </header>
@@ -152,7 +153,7 @@
                             $string = $row["featureName"];
                         }
                         $addonp += $price;
-                        if($index != 0){
+                        if ($index != 0) {
                             $addS .= ", ";
                         }
                         $addS .= $string;
@@ -162,14 +163,14 @@
             }
             $total = $addonp + $ps + $pbath + $pbed;
         }
-        
+
         $_SESSION['array_name'] = $addOn;
         ?>
     <center>
         <br><br>
         Estimate: <input type ="text" name="name" value="<?php echo $total; ?>">
         <br><br<br><br>
-      
+
         <form method="post" action="enterhouseinfo.php">
             <input type="hidden" name="bed" value="<?php echo $bed; ?>">
             <input type="hidden" name="bath" value="<?php echo $bath; ?>">

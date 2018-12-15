@@ -41,7 +41,6 @@ table th {
 			<div>
 				<a href="adminHomePage.php">Home</a>
 				<a href="#">Update Company Info</a>
-				<a href="#">View Bookings</a>
 				<a href="viewResumes.php">View Resumes</a>
                                
                                 <ul>
@@ -62,7 +61,7 @@ table th {
                                         </ul>
                                     </li>
 				</ul>
-				<a href="#">My Info</a>
+				<a href="adminInfo.php">My Info</a>
 				<a href="homePage.php">Log out</a>
 			</div>
 		</nav>
