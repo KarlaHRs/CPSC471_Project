@@ -49,6 +49,9 @@
             $address = mysqli_real_escape_string($conn, $_POST['address']);
             $Cusername = $_SESSION['username'];
             $frequency = $_POST['frequency'];
+            $d = $_POST['d'];
+            $t = $_POST['t'];
+            $cleaningID;
 
             if (isset($_POST['textarea']) && $_POST['textarea'] != '') {
                 $comment = $_POST['comment'];
@@ -63,8 +66,8 @@
                 $sql = "INSERT into cleaninglocation values('$zipcode', $houseno, $bed, $bath, '$address', '$size', '$Cusername')";
                 if ($conn->query($sql) === TRUE) {
                     echo ("<script LANGUAGE='JavaScript'>
-              window.alert('New record created!');
-              </script>");
+            window.alert('New record created!');
+        </script>");
                 } else {
                     echo "Error: " . $sql . "<br>" . $conn->error;
                 }
@@ -78,15 +81,46 @@
             }
             if (!empty($array)) {
                 foreach ($array as $item) {
+                    $name = $item;
                     $sql = "INSERT INTO serviceType(service, cleaningId) VALUES ('$item', $cleaningID)";
                     if ($conn->query($sql) === TRUE) {
-                        echo ("<script LANGUAGE='JavaScript'>
-              window.alert('Your cleaning was booked successfully!');
-              </script>");
+                        
                     } else {
                         echo "Error: " . $sql . "<br>" . $conn->error;
                     }
+                    $sql = "SELECT * FROM priceCategory WHERE featureName='$name'";
+                    $result = $conn->query($sql);
+                    if ($result->num_rows > 0) {
+
+                        while ($row = $result->fetch_assoc()) {
+                            $id = $row['id'];
+                            $sql = "INSERT INTO uses(cleaningId, priceCategoryID, featureName) VALUES ($cleaningID, $id, '$name')";
+                            if ($conn->query($sql) === TRUE) {
+                                
+                            } else {
+                                echo "Error: " . $sql . "<br>" . $conn->error;
+                            }
+                        }
+                    } else {
+                        
+                    }
                 }
+            }
+
+            $sql = "INSERT INTO cleaningschedule(Date, startTime, CUsername, cleaningId) VALUES ('$d', $t, '$Cusername', $cleaningID)";
+            if ($conn->query($sql) === TRUE) {
+                
+            } else {
+                echo "Error: " . $sql . "<br>" . $conn->error;
+            }
+
+            $sql = "INSERT INTO accesses(date, time, CUsername) VALUES ('$d', $t, '$Cusername')";
+            if ($conn->query($sql) === TRUE) {
+                echo ("<script LANGUAGE='JavaScript'>
+            window.alert('Your cleaning was booked successfully!');
+        </script>");
+            } else {
+                echo "Error: " . $sql . "<br>" . $conn->error;
             }
         }
         ?>
@@ -110,11 +144,62 @@
                 <option value="Monthly">Monthly</option>
                 <option value="One-time">One-time</option>
             </select><br><br><br>
-            <label for="frequency">Special instructions/requests: </label><br><br>
-            <textarea id="comment" name="comment"></textarea>
 
+            *<label for="frequency">Please select one of the available dates below: </label><br><br>
+
+            <select name="d" id='d'>
+                <?php
+                $d;
+
+                $sql = "SELECT DISTINCT date FROM companyschedule WHERE availability=1";
+                $result = $conn->query($sql);
+                if ($result->num_rows > 0) {
+                    $date = $row['date'];
+                    while ($row = $result->fetch_assoc()) {
+                        echo "<option value=$row[date]>" . $row['date'] . "</option>";
+                    }
+                } else {
+                    
+                }
+                ?>
+            </select>
+
+            <button type=button onclick="myFunction();">Select</button><br>
+            Day of week: <input type="text" id="day" style="width: 150px;" readonly><br>
+
+            <label for=time>Times available: </label>
+            <select name="t" id='t'>;
+                <?php
+                $sql = "SELECT DISTINCT startTime FROM companyschedule WHERE availability=1";
+                $result = $conn->query($sql);
+                if ($result->num_rows > 0) {
+                    while ($row = $result->fetch_assoc()) {
+                        echo "<option value=" . $row[startTime] . ">" . $row['startTime'] . "</option>";
+                    }
+                } else {
+                    
+                }
+                ?>
+            </select>
+
+            <br><br><label for="frequency">Special instructions/requests: </label><br><br>
+            <textarea id="comment" name="comment"></textarea>
             <button type=submit class=viewedbutton name=submit>Submit</button>
         </form>
+
+
+        <script>
+            function myFunction() {
+                var input = document.getElementById("d").value;
+                var date = new Date(input).getUTCDay();
+
+                var weekday = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+                var day = weekday[date];
+
+                document.getElementById("day").value = day;
+
+            }
+        </script>
 
     </body>
 </html>

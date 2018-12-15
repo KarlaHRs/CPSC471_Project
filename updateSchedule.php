@@ -134,7 +134,7 @@
         <div>
             <center>
                 <label for="start">Date:</label>
-                <input type="date" placeholder="dd:mm:yy" id="myDate" min="2018-01-01" max="2018-12-31" value="<?php echo $date; ?>">
+                <input type="date" placeholder="dd:mm:yy" id="myDate" min="2018-01-01" max="2019-02-28" value="<?php echo $date; ?>">
                 <button onclick="myFunction()">Select</button><br><br>
             </center>
         </div>

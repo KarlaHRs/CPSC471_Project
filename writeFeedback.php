@@ -13,53 +13,60 @@
                     <a href="#">View Bookings</a>
                     <a href="SubmitResume.php">Submit Resumes</a>
                     <a href="#">Update Services</a>
-                    <a href="customerInfo">My Info</a>
+                    <a href="#">My Info</a>
                     <a href="information.php">Log out</a>
                 </div>
             </nav>
         </header><br><br>
-        
-            <form method="post" class="inputbox">
-                <font size="4" color="black">
-                Day of cleaning : <input type="text" name="day"><br><br>
-                Month of cleaning: <input type="text" name="month"><br><br>
-                Year of cleaning: <input type="text" name="year"><br><br>
-                Your cleaning id: <input type="text" name="id"><br><br>
-                <label for="frequency"> Comment: </label><br>
-                <textarea id="comment" name="comment"></textarea><br><br>
-                <button class="viewedbutton" type="submit" name="submit"><span>Submit</span></button>
-                </font>
-            </form>
 
-            <?php
-            session_start();
-            if (isset($_POST['submit'])) {
+        <form method="post" class="inputbox">
+            <font size="4" color="black">
+            Day of cleaning : <input type="text" name="day"><br><br>
+            Month of cleaning: <input type="text" name="month"><br><br>
+            Year of cleaning: <input type="text" name="year"><br><br>
+            Your cleaning id: <input type="text" name="id"><br><br>
+            <label for="frequency"> Comment: </label><br>
+            <textarea id="comment" name="comment"></textarea><br><br>
+            <button class="viewedbutton" type="submit" name="submit"><span>Submit</span></button>
+            </font>
+        </form>
 
-                include("includes/db.inc.php");
+        <?php
+        session_start();
+        if (isset($_POST['submit'])) {
 
-                $day = $_POST['day'];
-                $month = $_POST['month'];
-                $year = $_POST['year'];
-                $comment = $_POST['comment'];
-                $id = $_POST['id'];
-                $username = $_POST['username'];
+            include("includes/db.inc.php");
 
+            $day = $_POST['day'];
+            $month = $_POST['month'];
+            $year = $_POST['year'];
+            $comment = $_POST['comment'];
+            $id = $_POST['id'];
+            $username = $_POST['username'];
 
-                if (empty($day) || empty($month) || empty($year) || empty($comment) || empty($id)) {
-                    echo ("<script LANGUAGE='JavaScript'>
+            if( ! ini_get('date.timezone') )
+{
+    date_default_timezone_set('UTC');
+}
+            
+            $date = strtotime("$year-$month-$day");
+            $date = date("Y-m-d", $date);
+
+            if (empty($day) || empty($month) || empty($year) || empty($comment) || empty($id)) {
+                echo ("<script LANGUAGE='JavaScript'>
                                 window.alert('Cells is empty: no cells must be blank');
                                 window.location.href='writeFeedback.php';
                                 </script>");
-                } else {
+            } else {
 
-                    $sql = "INSERT INTO feedback (day, month, year, cleaningId, comment, adminUsername) VALUES ('$day', '$month', '$year', '$id', '$comment', '$username')";
-                    if ($conn->query($sql)) {
-                        echo "Records added successfully.";
-                    } else {
-                        echo "ERROR: Could not able to execute $sql. ";
-                    }
+                $sql = "INSERT INTO feedback (date, cleaningId, comment, adminUsername) VALUES ('$date', $id, '$comment', NULL)";
+                if ($conn->query($sql)) {
+                  
+                } else {
+                    echo "ERROR: Could not able to execute $sql. ";
                 }
             }
-            ?>
+        }
+        ?>
     </body>
 </html>
