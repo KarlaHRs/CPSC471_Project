@@ -24,7 +24,7 @@
 	</header>
 	
 <article>
-		Welcome!<br><br>
+		Welcome to the Cleaning Company!<br><br>
 		
 		<p> We will serve you wholeheartedly</p>
 		
